@@ -26,8 +26,7 @@ for i in range(len(list_of_files)):
     # before converting to mesh we need to merge all shapes in the document
     if len(doc.Objects) > 1:    
         FreeCAD.activeDocument().addObject("Part::MultiFuse","Fusion")
-        #FreeCAD.activeDocument().Fusion.Shapes = [FreeCAD.activeDocument()._911_E0W001,FreeCAD.activeDocument()._911_E0W]
-        FreeCAD.activeDocument().Fusion.Shapes = [doc.Objects[k].Content for k in range(len(doc.Objects))]
+        FreeCAD.activeDocument().Fusion.Shapes = [doc.Objects[k] for k in range(len(doc.Objects) - 1)]
         FreeCAD.ActiveDocument.recompute()
         mesh = doc.addObject("Mesh::Feature","Mesh")
         mesh.Mesh = MeshPart.meshFromShape(doc.getObject("Fusion").Shape,5,0,0,0.5)
@@ -47,7 +46,8 @@ for i in range(len(list_of_files)):
     convert = "meshlabserver -i " + file_stl + " -o " + file_dae
     os.system(convert)
     os.system("rm " + file_stl)
-    os.system("mkdir " + cwd + "done_step")
+    if not os.path.exists(cwd + "done_step/"):
+        os.makedirs(cwd + "done_step/")
     os.system("mv " + file + " " + cwd + "done_step/")
 
 t_end = time.time()
