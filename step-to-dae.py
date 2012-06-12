@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import sys
 sys.path.append("/usr/lib/freecad/lib/")
 import time
@@ -10,8 +12,15 @@ import Part
 import MeshPart
 
 cwd = os.getcwd() + "/"
-extension = ".step"
-list_of_files = [file for file in os.listdir(cwd) if file.lower().endswith(extension)]
+
+if len(sys.argv) == 1:
+
+    extension = ".step"
+    list_of_files = [filei for filei in os.listdir(cwd) if file.lower().endswith(extension)]
+
+else:
+    sys.argv.pop(0)
+    list_of_files = sys.argv 
 
 for i in range(len(list_of_files)):
 
@@ -41,7 +50,7 @@ for i in range(len(list_of_files)):
     FreeCAD.ActiveDocument.getObject("Mesh").Mesh.write(file_stl,"STL")
     FreeCAD.closeDocument("Unnamed")
 
-    # using meshlab to convert stl files to dae
+# using meshlab to convert stl files to dae
     file_dae = file.replace(".step", ".dae")
     convert = "meshlabserver -i " + file_stl + " -o " + file_dae
     os.system(convert)
@@ -52,6 +61,7 @@ for i in range(len(list_of_files)):
 
 t_end = time.time()
 
+print " "
 print "Started at ", time.ctime(t_start)
 print "Finished at ", time.ctime(t_end)
 print "Time elapsed: ", (t_end - t_start)/60, " minutes"
