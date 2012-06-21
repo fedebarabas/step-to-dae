@@ -30,11 +30,18 @@ To convert a single step file (foo.step) use
 
 $ step-to-dae foo.step
 
-All 
+All processed step files are stored in a folder called "done_step" nested in the current directory
 
 
 Known Bugs
 ------------
 
+The script is not able to process ~30% of tested step files. The program fails during the conversion of the step file into a binary stl with FreeCAD. In some cases it hangs and in some others it breaks while using nearly all RAM.
+
+Anyway, I know that it's not an issue of the script itself, because the same thing happens if I try to convert the file manually (using FreeCAD's GUI) but I'm not an expert so there's a chance that some of this bugs could be fixed. Please contact me if you know how.
+
+
 Contact
 ------------
+
+[fede.barabas@gmail.com](mailto:fede.barabas@gmail.com)
