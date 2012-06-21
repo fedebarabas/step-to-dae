@@ -11,8 +11,16 @@ I wrote this program because I wanted to use .step 3D models in Google Sketchup.
 Dependencies
 ------------
 
+* [FreeCAD](http://sourceforge.net/apps/mediawiki/free-cad/index.php?title=Main_Page)
+* [MeshLab](http://meshlab.sourceforge.net/)
+* Python v2.7
+
+You can find them all in Ubuntu's repositories, I'm sure they are present in other distributions' repositories as well.
+
 Usage
 ------------
+
+
 
 Known Bugs
 ------------
