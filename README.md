@@ -23,9 +23,11 @@ Usage
 There are two ways of using this script.
 
 To convert all step files in current directory use
+
 $ step-to-dae 
 
 To convert a single step file (foo.step) use
+
 $ step-to-dae foo.step
 
 All 
